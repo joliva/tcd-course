@@ -1,0 +1,22 @@
+<Alloy>
+	<TabGroup backgroundColor="white" barColor="red" >
+		<Tab id="tab1" title="Fugitives" icon="fugitives.png">
+			<Window id="win1" title="Fugitives" backgroundImage="back1.png">
+				<TableView id="table">
+					<TableViewSection id="sectionFugitives" headerTitle="">
+						<TableViewRow title="John"/>
+					</TableViewSection>
+				</TableView>
+			</Window>
+		</Tab>
+		<Tab id="tab2" title="Captured" icon="captured.png">
+			<Window id="win2" title="Captured 2" backgroundImage="back2.png">
+				<TableView id="table">
+					<TableViewSection id="sectionCaptured" headerTitle="">
+						<TableViewRow title="Arlene"/>
+					</TableViewSection>
+				</TableView>
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>
