@@ -1,0 +1,8 @@
+<Alloy>
+	<Tab title="Captured" icon="captured.png">
+		<Window title="Captured">
+			<TableView>
+			</TableView>
+		</Window>
+	</Tab>
+</Alloy>

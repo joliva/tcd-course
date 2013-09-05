@@ -3,6 +3,8 @@ build.log
 build
 tmp
 .map
+.settings
+.fastdev.lock
 *.pyc
 *.log
 *.csv
