@@ -1,0 +1,7 @@
+"TableView":{
+	backgroundColor:"transparent",
+	separatorColor:"white"
+},
+"Window":{
+	backgroundImage:"grain.png"
+}
