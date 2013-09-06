@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id='winDetail' layout='vertical'>
+		<Label id='lblHeader' />
+		<ImageView id='imgPeep' />
+		<Button id='btnAdd' />
+		<Button id='btnDelete' />
+		<Button id='btnCapture' />
+	</Window>
+</Alloy>

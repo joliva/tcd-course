@@ -1,0 +1,9 @@
+"#rowFugitive":{
+	font:{
+		fontSize: 18,
+		fontFamily: 'Helvetica'
+	}
+},
+".container" : {
+  
+}

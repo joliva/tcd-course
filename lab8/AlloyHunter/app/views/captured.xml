@@ -1,0 +1,10 @@
+<Alloy>
+	<Collection src="people" />
+	<Tab id="tabCaptured" title="Captured" icon="captured.png">
+		<Window title="Captured">
+			<TableView id="tblCaptured" dataCollection="people" dataFilter="filterCaptured">
+				<TableViewRow id="rowCaptured" color="white" title="{name}" />
+			</TableView>
+		</Window>
+	</Tab>
+</Alloy>
