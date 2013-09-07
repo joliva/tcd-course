@@ -1,0 +1,34 @@
+".container" : {
+},
+"Button":{
+	width: '50%',
+	height: Ti.UI.SIZE,
+	top: '10px'
+},
+"Label":{
+	top: '10px',
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	font:{
+		fontSize: 20,
+		fontFamily: 'Helvetica'
+	},
+	color: 'white'
+},
+"#btnAdd":{
+	title: 'Add Photo'
+},
+"#btnCapture":{
+	title: 'Capture'
+},
+"#btnDelete":{
+	title: 'Delete'
+},
+"#lblHeader":{
+	text: 'Not Captured'
+},
+"#imgPeep":{
+	top: '15px',
+	image: '/burglar.png',
+	height: '150dp'
+}
