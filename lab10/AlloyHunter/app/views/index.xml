@@ -1,0 +1,6 @@
+<Alloy>
+	<TabGroup>
+		<Require type="view" src="fugitives" id="fugitiveTab"/>
+		<Require type="view" src="captured" id="capturedTab"/>
+	</TabGroup>
+</Alloy>
