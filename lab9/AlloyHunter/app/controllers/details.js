@@ -1,16 +1,35 @@
 var data = arguments[0] || {};
-$.winDetail.title = data.name;
+var model = data.model;
+var name = model.get('name');
+var captured = model.get('captured');
+var url = model.get('url');
 
-$.lblHeader.text = data.captured ? 'Captured' : 'Not Captured';
-$.btnCapture.visible = !data.captured;
+$.winDetail.title = name;
+$.lblHeader.text = captured ? 'Captured' : 'Not Captured';
+$.btnCapture.visible = !captured;
+
+if (url !== '') {
+	$.imgPeep.setImage(url);
+}
+
 
 var guts = {
 	success:function(event) {
 		// called when media returned
 		if(event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO) {
 			setImage(event.media);
+			
+			var filepath = Ti.Filesystem.applicationDataDirectory;
+			var filename = 'photo-' + model.get('alloy_id') + '.png';
+			Ti.API.debug('saving photo to: ' + filepath + filename);
+			
+			var f = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,filename);
+			f.write(event.media); // write to the file
+			
+			model.set('url', filepath + filename);
+			model.save();
 		} else {
-			Ti.API.debug("unsupported media type = "+event.mediaType);
+			Ti.API.debug("unsupported media type = " + event.mediaType);
 		}
 	},
 	cancel:function() {

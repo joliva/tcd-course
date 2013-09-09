@@ -3,6 +3,11 @@
 		fontSize: 18,
 		fontFamily: 'Helvetica'
 	}
+},"#rowCaptured":{
+	font:{
+		fontSize: 18,
+		fontFamily: 'Helvetica'
+	}
 },
 ".container" : {
   

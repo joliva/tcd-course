@@ -1,3 +1,5 @@
+var peeps = Alloy.Collections.people;
+
 // only show captured people
 function filterCaptured(collection) {
 	return collection.where({captured:1});
@@ -5,9 +7,9 @@ function filterCaptured(collection) {
 
 $.tblCaptured.addEventListener('click', function(e){
 	var data = {
-		name: e.rowData.title,
-		captured: true
+		model: peeps.get(e.rowData.alloy_id)
 	};
+				
 	var details = Alloy.createController('details', data).getView();
 	$.tabCaptured.open(details);
 });

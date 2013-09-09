@@ -16,7 +16,8 @@ exports.definition = {
 		},
 		adapter: {
 			type: "sql",
-			collection_name: "people"
+			collection_name: "people",
+			db_name: 'alloy_hunter'
 		}
 	},
 	extendModel: function(Model) {
