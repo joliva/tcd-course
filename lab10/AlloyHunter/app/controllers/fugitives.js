@@ -7,9 +7,9 @@ function filterFugitives(collection) {
 
 $.tblFugitives.addEventListener('click', function(e) {
 	var model = peeps.get(e.rowData.alloy_id);
-	Ti.API.debug(JSON.stringify(model.toJSON()));
 	
 	var data = {
+		parentTab: $.tabFugitives,
 		model: peeps.get(e.rowData.alloy_id)
 	};
 				

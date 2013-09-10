@@ -1,0 +1,10 @@
+<Alloy>
+	<Window class='container' id="mapWindow">
+		<!-- Tags for iOS -->
+		<View id="mapView" ns="Ti.Map" platform="ios"/>
+		
+		<!-- Tags for Android -->
+		<!--Module id="mapView" module="ti.map" method="createView" platform="android"/-->
+		<View id="mapView" ns="Alloy.Globals.Map" method="createView" platform="android"/>
+	</Window>
+</Alloy>

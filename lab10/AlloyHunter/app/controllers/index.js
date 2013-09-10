@@ -15,10 +15,6 @@ if (Ti.App.Properties.getBool('seeded', false) == false) {
 			_.each(peeps, function(peep) {
 				var person = Alloy.createModel('people', {name:peep.name});
 				
-				if (person.get('name') == 'Don Thorp') {
-					person.set('captured', 1);
-				}
-				
 				people.add(person);
 				person.save();
 			});

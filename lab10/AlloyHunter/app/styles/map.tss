@@ -1,0 +1,19 @@
+"#mapWindow":{
+	title: 'Captured Location',
+	barColor: '#6d0a0c'
+},
+"#mapView[platform=ios]": {
+	mapType: Ti.Map.STANDARD_TYPE,
+	animate:true,
+	regionFit:true,
+	annotations:[],
+	userLocation:true
+},
+"#mapView[platform=android]": {
+	mapType: Alloy.Globals.Map.NORMAL_TYPE,
+	opacity:1,
+	animate:false,
+	regionFit:true,
+	annotations:[],
+	userLocation:true
+}

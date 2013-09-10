@@ -4,6 +4,6 @@
 		<ImageView id='imgPeep' />
 		<Button id='btnAdd' />
 		<Button id='btnDelete' />
-		<Button id='btnCapture' />
+		<Button id='btnExtra' />
 	</Window>
 </Alloy>

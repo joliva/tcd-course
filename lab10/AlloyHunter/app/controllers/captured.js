@@ -7,9 +7,10 @@ function filterCaptured(collection) {
 
 $.tblCaptured.addEventListener('click', function(e){
 	var data = {
+		parentTab: $.tabCaptured,
 		model: peeps.get(e.rowData.alloy_id)
 	};
-				
+	
 	var details = Alloy.createController('details', data).getView();
 	$.tabCaptured.open(details);
 });

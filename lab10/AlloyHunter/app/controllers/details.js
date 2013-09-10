@@ -1,17 +1,26 @@
 var data = arguments[0] || {};
+
+var parentTab = data.parentTab;
 var model = data.model;
+
 var name = model.get('name');
 var captured = model.get('captured');
 var url = model.get('url');
 
 $.winDetail.title = name;
-$.lblHeader.text = captured ? 'Captured' : 'Not Captured';
-$.btnCapture.visible = !captured;
 
-if (url !== '') {
-	$.imgPeep.setImage(url);
+Ti.API.debug(JSON.stringify(model.toJSON()));
+
+function updateView() {
+	$.lblHeader.text = (captured==1) ? 'Captured' : 'Not Captured';
+	$.btnExtra.title = (captured==1) ? 'View on Map' : 'Capture';
+	
+	if (url !== '') {
+		$.imgPeep.setImage(url);
+	}
 }
 
+updateView();
 
 var guts = {
 	success:function(event) {
@@ -74,3 +83,63 @@ $.btnAdd.addEventListener('click', function() {
 		}
 	}
 });
+
+$.btnExtra.addEventListener('click', function(e) {	
+	if (captured == 0) {
+		// set up geolocation settings
+		if (Ti.Geolocation.getLocationServicesEnabled() == true) {
+			if (OS_IOS) {
+				Ti.Geolocation.setPurpose('Tracking down criminal scum.');
+				Ti.Geolocation.setAccuracy(Ti.Geolocation.ACCURACY_BEST);
+			}
+				
+			if (OS_ANDROID) {
+				Ti.Geolocation.setAccuracy(Ti.Geolocation.ACCURACY_HIGH);
+			}
+
+		} else {
+			alert ('Geolocation is not available');
+			return;
+		}
+				
+		// get lat/lon
+		Ti.Geolocation.getCurrentPosition(function(e) {
+			Ti.API.debug('results info:  ' + JSON.stringify(e));
+			
+			if (e.success) {
+				model.set('capturedLat', e.coords.latitude);
+				model.set('capturedLon', e.coords.longitude);
+				model.set('captured', 1);
+			} else {
+				Ti.API.debug('Error getting location: ' + e.error);
+				if (OS_ANDROID && ENV_DEV) alert('Make sure location is set in emulator');
+				return;
+			}
+			
+			model.save({},{
+				success: function(model, resp, options) {
+					alert ('Fugitive captured!');
+					
+					Alloy.Collections.people.fetch();	// need to update table views
+					
+					if (OS_IOS) $.winDetail.close();
+					
+					if (OS_ANDROID) setTimeout(function() {
+						$.winDetail.close();
+					}, 2000);
+					
+					Ti.API.debug(JSON.stringify(model.toJSON()));
+				}
+			});
+		});
+	} else {
+		// show them on map
+		var data = {
+			model: model
+		};
+						
+		var map = Alloy.createController('map', data).getView();
+		parentTab.open(map);
+	}
+});
+

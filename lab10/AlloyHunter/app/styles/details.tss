@@ -18,9 +18,6 @@
 "#btnAdd":{
 	title: 'Add Photo'
 },
-"#btnCapture":{
-	title: 'Capture'
-},
 "#btnDelete":{
 	title: 'Delete'
 },
