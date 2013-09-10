@@ -1,0 +1,10 @@
+<Alloy>
+	<Collection src="people" />
+	<Tab id="tabFugitives" title="Fugitives" icon="fugitives.png">
+		<Window title="Fugitives">
+			<TableView id="tblFugitives" dataCollection="people" dataFilter="filterFugitives">
+				<TableViewRow id="rowFugitive" color="white" title="{name}" alloy_id="{alloy_id}" />
+			</TableView>
+		</Window>
+	</Tab>
+</Alloy>
