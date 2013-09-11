@@ -101,6 +101,29 @@ $.btnAdd.addEventListener('click', function() {
 	}
 });
 
+$.btnDelete.addEventListener('click', function() {
+    // delete model in ACS
+/**/
+    acs.deleteFugitive(model.toJSON(), function(e) {
+    	if (e) {
+    		// success
+   		
+    	    // delete model
+			model.destroy({success: function() {					
+					Alloy.Collections.people.fetch();	// need to update table views
+					
+					if (OS_IOS) $.winDetail.close();
+					
+					if (OS_ANDROID) setTimeout(function() {
+						$.winDetail.close();
+					}, 2000);
+			}});
+
+    	}
+    });
+/**/
+});
+
 $.btnExtra.addEventListener('click', function(e) {	
 	if (captured == 0) {
 		// set up geolocation settings
