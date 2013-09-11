@@ -1,6 +1,7 @@
 exports.definition = {
 	config: {
 		columns: {
+			'acs_id':'text',
 			'name':'text',
 			'captured':'integer',
 			'url':'text',

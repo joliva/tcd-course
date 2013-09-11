@@ -1,10 +1,14 @@
 <Alloy>
 	<Collection src="people" />
 	<Tab id="tabFugitives" title="Fugitives" icon="fugitives.png">
-		<Window title="Fugitives">
-			<TableView id="tblFugitives" dataCollection="people" dataFilter="filterFugitives">
+		<Window id="winFugitive" title="Fugitives">
+   			<TableView id="tblFugitives" dataCollection="people" dataFilter="filterFugitives">
 				<TableViewRow id="rowFugitive" color="white" title="{name}" alloy_id="{alloy_id}" />
 			</TableView>
+			
+			<!-- hidden and used later -->
+			<Button id="add" title="Add" top="-50dp"/>
+			<Require type="view" src="Login" id="login"/>
 		</Window>
 	</Tab>
 </Alloy>

@@ -4,7 +4,6 @@ if (Ti.App.Properties.getBool('seeded', false) == false) {
 		
 	var url = "http://bountyhunterapp.appspot.com/bounties";
 	
-	Ti.API.debug('creating client');
 	var client = Ti.Network.createHTTPClient({
 		// function called when the response data is available
 		onload : function(e) {
@@ -43,7 +42,27 @@ if (Ti.App.Properties.getBool('seeded', false) == false) {
 	people.fetch();
 }
 
-//free data binding resources when view/controller closes
+if (OS_ANDROID) {
+	$.index.addEventListener("open", function(e) {
+	    var activity = $.index.activity;
+		activity.onCreateOptionsMenu = function(e) {
+			var menuItem = e.menu.add({
+				title : "Add Fugitive",
+				showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS,
+				icon : "add_icon.png"
+			});
+
+			menuItem.addEventListener("click", function(e) {
+			    var addFugitiveController = Alloy.createController('FugitiveAdd');
+			    Alloy.Globals.tabFugitives.open(addFugitiveController.getView());
+			});
+		};
+
+		activity.invalidateOptionsMenu();
+	});
+}
+
+// free data binding resources when view/controller closes
 $.index.addEventListener('close', function() {
 	$.destroy();
 });

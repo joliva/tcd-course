@@ -6,24 +6,24 @@
 		layout:'vertical',
 		barColor: '#6d0a0c',
 		backgroundColor: 'transparent',
-		backgroundImage: 'images/grain.png'
+		backgroundImage: 'grain.png'
 },
 
 "#name_tf" : {
 		height: 40,
 		top:50,
-		width:250,
+		width:"75%",
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
 		returnKeyType:Titanium.UI.RETURNKEY_DONE,
 		borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 		hintText:'Fugitive Name'
 },
 "#name_tf[platform=android]" : {
-		height:Ti.UI.SIZE ,
+		height:Ti.UI.SIZE
 },
 "#save_button" :{
 		title:"Save",
 		height:Ti.UI.SIZE,
-		width:80,
-		top:10
+		width:"50%",
+		top:"30dp"
 }

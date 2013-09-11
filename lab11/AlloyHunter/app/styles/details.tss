@@ -1,5 +1,3 @@
-".container" : {
-},
 "Button":{
 	width: '50%',
 	height: Ti.UI.SIZE,

@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ti:app xmlns:ti="http://ti.appcelerator.org">
-    <property name="acs-oauth-secret-development" type="string">FY2gKWgW4Mi40Cx1Oh51jrD1BWgtNK70</property>
-    <property name="acs-oauth-key-development" type="string">j0dNtky7TQavDaSmVkONdRsfLGV2m5Uj</property>
-    <property name="acs-api-key-development" type="string">Pb3BlLwJWIUgJ8amt5bdDRgMewpWSTYR</property>
-    <property name="acs-oauth-secret-production" type="string">Eq9xObuNu4NGkML0HLYGYUcZM2nLeXmi</property>
-    <property name="acs-oauth-key-production" type="string">cjMEb4RVnrLw9QviIIJF7cEcHSG1iUe3</property>
-    <property name="acs-api-key-production" type="string">N2m7a3aX6PzBedw65m67o8ZwIFk5copR</property>
+<?xml version="1.0" encoding="UTF-8"?><ti:app xmlns:ti="http://ti.appcelerator.org">
+    <property name="acs-oauth-secret-development" type="string">2J83AB9eByn2Jt5exZJVpQAqhe41gKFQ</property>
+    <property name="acs-oauth-key-development" type="string">DEIKE2MF4hpJoxfaQgm3AwVnhlxSBWOr</property>
+    <property name="acs-api-key-development" type="string">pbc8r7MjHNamAQh5hrfEvfhTXuy0jyyp</property>
+    <property name="acs-oauth-secret-production" type="string">NHsKnG0c6mC84JAWFMvx5gGPb0Pwo9HY</property>
+    <property name="acs-oauth-key-production" type="string">nDBTF9MepuKnQPlpWpRdzp6imI8D7Yd3</property>
+    <property name="acs-api-key-production" type="string">fRJwCWjZrlCeOJz3tzblJotC1RAyV96j</property>
     <id>com.olivalabs.alloyhunter</id>
-    <name>AlloyHunter (Lab 11)</name>
+    <name>AlloyHunter</name>
     <version>1.0</version>
     <publisher>jlo</publisher>
     <url>http://</url>
@@ -21,7 +20,7 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>false</analytics>
-    <guid>ce2b580a-211d-450f-8493-cb75abe3419a</guid>
+    <guid>a0a0a9f5-1052-4e24-8556-7f80c4e88f11</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
     <property name="ti.android.threadstacksize" type="int">32768</property>
     <iphone>
@@ -51,12 +50,10 @@
             <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
             <!-- Replace <com.domain.appid> with your application ID -->
             <uses-permission android:name="com.olivalabs.alloyhunter.permission.MAPS_RECEIVE"/>
-            <permission
-                android:name="com.olivalabs.alloyhunter.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+            <permission android:name="com.olivalabs.alloyhunter.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
             <application>
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
-                <meta-data
-                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBaxD-6reyV_7T6uuaEFNu9_E8rGYetNs4"/>
+                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBaxD-6reyV_7T6uuaEFNu9_E8rGYetNs4"/>
             </application>
         </manifest>
     </android>

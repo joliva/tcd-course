@@ -1,4 +1,5 @@
 var data = arguments[0] || {};
+var acs = Alloy.Globals.ACS;
 
 var parentTab = data.parentTab;
 var model = data.model;
@@ -35,8 +36,24 @@ var guts = {
 			var f = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,filename);
 			f.write(event.media); // write to the file
 			
+			var model_saved = model.toJSON();
 			model.set('url', filepath + filename);
-			model.save();
+			
+		    // update model in ACS
+		    acs.saveFugitive(model.toJSON(), function(e) {
+		    	if (e) {
+		    		// success
+		    		
+		    	    // save model
+		    	    model.save();
+
+		    	    // force tables to update
+		    	    Alloy.Collections.people.fetch();    		
+		    	} else {
+		    		// revert on failure
+		    		model.set(model_saved);
+		    	}
+		    });
 		} else {
 			Ti.API.debug("unsupported media type = " + event.mediaType);
 		}
@@ -106,6 +123,8 @@ $.btnExtra.addEventListener('click', function(e) {
 		Ti.Geolocation.getCurrentPosition(function(e) {
 			Ti.API.debug('results info:  ' + JSON.stringify(e));
 			
+			var model_saved = model.toJSON();
+			
 			if (e.success) {
 				model.set('capturedLat', e.coords.latitude);
 				model.set('capturedLon', e.coords.longitude);
@@ -115,22 +134,37 @@ $.btnExtra.addEventListener('click', function(e) {
 				if (OS_ANDROID && ENV_DEV) alert('Make sure location is set in emulator');
 				return;
 			}
-			
-			model.save({},{
-				success: function(model, resp, options) {
-					alert ('Fugitive captured!');
-					
-					Alloy.Collections.people.fetch();	// need to update table views
-					
-					if (OS_IOS) $.winDetail.close();
-					
-					if (OS_ANDROID) setTimeout(function() {
-						$.winDetail.close();
-					}, 2000);
-					
-					Ti.API.debug(JSON.stringify(model.toJSON()));
-				}
-			});
+
+		    // update model in ACS
+		    acs.saveFugitive(model.toJSON(), function(e) {
+		    	if (e) {
+		    		// success
+		    		
+		    	    // save model
+					model.save({},{
+						success: function(model, resp, options) {
+							alert ('Fugitive captured!');
+							
+							Alloy.Collections.people.fetch();	// need to update table views
+							
+							if (OS_IOS) $.winDetail.close();
+							
+							if (OS_ANDROID) setTimeout(function() {
+								$.winDetail.close();
+							}, 2000);
+							
+							Ti.API.debug(JSON.stringify(model.toJSON()));
+						},
+						failure: function() {
+				    		// revert on failure
+				    		model.set(model_saved);
+						}
+					});   		
+		    	} else {
+		    		// revert on failure
+		    		model.set(model_saved);
+		    	}
+		    });
 		});
 	} else {
 		// show them on map
