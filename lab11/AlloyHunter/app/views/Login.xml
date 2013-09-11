@@ -1,0 +1,10 @@
+<Alloy>
+	<View class="logincontainer" id="logincontainer">
+		<View id='wrapper'>
+			<ImageView image="/images/login.png" id='img'/>
+			<TextField id='name' hintText='username'/>
+			<TextField id='password' hintText='password'/>
+			<Button id='submit'/>
+		</View>
+	</View>
+</Alloy>
