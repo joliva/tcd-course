@@ -1,0 +1,11 @@
+<Alloy>
+	<View id='eView'>
+		<Label id='lbl' text='New Values:'>
+		<View id='wrapper'>
+			<TextField id='a' class='field' hintText='iOS'/>
+			<TextField id='b' class='field' hintText='Android'/>
+			<TextField id='c' class='field' hintText='Other'/>
+			<Button id='submit'/>
+		</View>
+	</View>
+</Alloy>

@@ -1,0 +1,15 @@
+".container": {
+	backgroundColor:"white"
+},
+"#entryView": {
+	width: Ti.UI.FILL,
+	height: '25%',
+	top:0,
+	backgroundColor: '#fff'
+},
+"#graphView": {
+	width: Ti.UI.FILL,
+	height: '75%',
+	top:'25%',
+	backgroundColor: '#fff'
+} 

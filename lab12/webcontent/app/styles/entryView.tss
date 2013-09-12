@@ -1,0 +1,38 @@
+"#eView": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	top:0,
+	backgroundColor: '#fff'
+},
+"#wrapper": {
+	layout: 'horizontal',
+	height: Ti.UI.SIZE,
+	left: 20, right: 20,
+	top: 50
+},
+"#lbl": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	left: 20, right: 20,
+	top:10,
+	color: '#000'
+},
+".field": {
+	width: '50dp',
+	height: '40dp',
+	left:10,
+	borderWidth: 1,
+	borderColor: '#ddd',
+	keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD,
+	borderRadius: 6,
+	textAlign: 'center'
+},
+"#c": {
+	editable: false
+},
+"#submit": {
+	title: 'Update',
+	width: Ti.UI.SIZE,
+	height: '40dp',
+	left:10,
+},

@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Pie Chart</title>
+    <link class="include" rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/examples.min.css" />
+    <script class="include" type="text/javascript" src="js/jquery.min.js"></script>
+    <style>
+    	#pie1 {
+    		width:200px; 
+    		height:200px;
+    		margin: 0 auto;
+    		top: 20px;
+    	}
+    </style>
+    <script>
+    	var plot;
+    </script>
+</head>
+<body>
+
+<div id="pie1"></div>
+
+  
+<script class="code" type="text/javascript">$(document).ready(function(){
+    plot1 = $.jqplot('pie1', [[['iOS',40],['Android',40],['Other',30]]], {
+        gridPadding: {top:0, bottom:38, left:0, right:0},
+        seriesDefaults:{
+            renderer:$.jqplot.PieRenderer, 
+            trendline:{ show:false }, 
+            rendererOptions: { padding: 8, showDataLabels: true }
+        },
+        legend:{
+            show:true, 
+            placement: 'outside', 
+            rendererOptions: {
+                numberRows: 1
+            }, 
+            location:'s',
+            marginTop: '15px'
+        }       
+    });
+});</script>
+
+<script class="include" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+<script class="include" type="text/javascript" src="js/jqplot.pieRenderer.min.js"></script>
+
+</body>
+
+
+</html>
