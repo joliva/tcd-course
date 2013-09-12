@@ -1,5 +1,6 @@
 <Alloy>
 	<Window class="container">
 		<Require type="view" src="entryView" id="entryView"/>
+		<WebView id='graphView' url='/graph.html'>
 	</Window>
 </Alloy>

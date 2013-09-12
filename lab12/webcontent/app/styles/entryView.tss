@@ -34,5 +34,5 @@
 	title: 'Update',
 	width: Ti.UI.SIZE,
 	height: '40dp',
-	left:10,
+	left:10
 },

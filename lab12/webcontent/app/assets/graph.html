@@ -3,6 +3,7 @@
 	<title>Pie Chart</title>
     <link class="include" rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
     <link rel="stylesheet" type="text/css" href="css/examples.min.css" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script class="include" type="text/javascript" src="js/jquery.min.js"></script>
     <style>
     	#pie1 {
@@ -13,7 +14,15 @@
     	}
     </style>
     <script>
-    	var plot;
+    	var plot1;
+    	
+		Ti.App.addEventListener("app:updatedValues", function(e) {
+			var newData = [['iOS',e.a],['Android',e.b],['Other',e.c]];
+			plot1.series[0].data = newData; 
+			plot1.resetAxesScale(); 
+			plot1.replot();
+		});
+
     </script>
 </head>
 <body>
