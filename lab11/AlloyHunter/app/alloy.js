@@ -10,5 +10,8 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-//Alloy.Globals.Map = require('ti.map');
+if (OS_ANDROID) {
+	Alloy.Globals.Map = require('ti.map');
+}
+
 Alloy.Globals.ACS = require('acs');
