@@ -2,12 +2,12 @@
 	Library to wrap app-specific functionality around the ACS APIs
 */
 
-// a couple local variables to save state
-var currentUser = null;
+Alloy.Globals.user = null;
+
 var loggedIn = false;
 
 var Cloud = require('ti.cloud');
-Cloud.debug = true;
+//Cloud.debug = true;
 
 // Persist the user's login status -- by default, they're
 // logged out when the app closes
@@ -16,7 +16,8 @@ if(sid) {
 	Cloud.sessionId = sid;
 	loggedIn = true;
 	var me = Cloud.Users.showMe(function(e) {
-		currentUser = e.users[0];
+		Alloy.Globals.user = e.users[0];
+		Ti.App.fireEvent('got_user');
 	});
 }
 
@@ -98,7 +99,7 @@ exports.saveFugitive = function(fugitive, callback) {
 	} else {
 		Ti.API.debug('updating fugitive - must be logged in');
 		alert ('Must be logged in');	}
-}
+};
 
 exports.createFugitive = function(fugitive, callback) {
 	if (loggedIn === true) {
@@ -110,7 +111,8 @@ exports.createFugitive = function(fugitive, callback) {
 				'url': fugitive.url,
 				'capturedLat': fugitive.capturedLat,
 				'capturedLon': fugitive.capturedLon
-		    }
+		    },
+		    user_id: Alloy.Globals.user
 		}, function (e) {
 		    if (e.success) {
 		        var fugitive = e.fugitive[0];
@@ -136,7 +138,7 @@ exports.createFugitive = function(fugitive, callback) {
 		Ti.API.debug('creating fugitive - must be logged in');
 		alert ('Must be logged in');
 	}
-}
+};
 
 exports.deleteFugitive = function(fugitive, callback) {
 	if (loggedIn === true) {
@@ -157,4 +159,25 @@ exports.deleteFugitive = function(fugitive, callback) {
 		Ti.API.debug('deleting fugitive - must be logged in');
 		alert ('Must be logged in');
 	}
-}
+};
+
+exports.getFugitives = function(user, callback) {
+	if (loggedIn === true) {
+		Cloud.Objects.query ({
+		    classname: 'fugitive',
+		    where: {user_id: user.id},
+		    order: 'username',
+		    response_json_depth: 1,
+		    limit: 1000
+		}, function (e) {
+		    if (e.success) {
+		        if (callback) callback(e);
+		    } else {
+		        Ti.API.error('get fugitives error: ' + ((e.error && e.message) || JSON.stringify(e)));
+		        if (callback) callback(false);
+		    }
+		});
+	} else {
+		Ti.API.debug('getting fugitives - must be logged in');
+	}
+};

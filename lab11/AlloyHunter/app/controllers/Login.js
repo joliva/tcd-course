@@ -2,8 +2,10 @@ var acs = Alloy.Globals.ACS;
 
 if(acs.isLoggedIn()) {
 	// user is logged in so just close this view
-	$.logincontainer.hide();
-    if (OS_ANDROID) Ti.UI.Android.hideSoftKeyboard();
+	$.logincontainer.setVisible(false);
+    if (OS_ANDROID) {
+    	Ti.UI.Android.hideSoftKeyboard();
+    }
 } else {
 	Ti.API.debug('not logged in')
 }
@@ -12,8 +14,13 @@ if(acs.isLoggedIn()) {
 // otherwise, change the submit button's title to "Try again..." and then back
 var createCallback = function(user) {
 	if (user) {
+	    Alloy.Globals.user = user;
+		Ti.App.fireEvent('got_user');
+		
 		$.logincontainer.hide();
-	    if (OS_ANDROID) Ti.UI.Android.hideSoftKeyboard();
+	    if (OS_ANDROID) {
+	    	Ti.UI.Android.hideSoftKeyboard();
+	    }
 	} else {
 		$.submit.text - 'Try again...';
 	}
